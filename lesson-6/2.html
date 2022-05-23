@@ -66,6 +66,10 @@
   также должен меняться.
   */
 
+  const spanElm = document.querySelector('span');
+  document.querySelector('input').addEventListener('input', e => {
+    spanElm.textContent = e.target.value;
+  });
 
   /*
   2. При клике на кнопку с классом messageBtn необходимо элементу с классом
@@ -74,6 +78,13 @@
   2) поставить данному элементу стиль visibility в значение 'visible'.
    */
 
+   const buttonElm = document.querySelector('.messageBtn');
+   const divElm = document.querySelector('.message');
+
+   buttonElm.addEventListener('click', () => {
+    divElm.classList.add('animate__animated', 'animate__fadeInLeftBig');
+    divElm.style.visibility = 'visible';
+   });
 
   /*
   3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
@@ -87,6 +98,24 @@
   Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
    */
 
+   const formElm = document.querySelector('form');
+   const formData = formElm.querySelectorAll('input, select');
+   formElm.addEventListener('submit', event => {
+     formData.forEach(formData => {
+       if ( formData.value === "") {
+        formData.classList.add('error');
+        event.preventDefault();
+       }
+     });
+   });
+
+   formElm.addEventListener('input', event => {
+     if (!event.target.classList.contains('form-control')){
+       return;
+     }
+     event.target.value === ""
+     ? event.target.classList.add('error') : event.target.classlist.remove('error');
+   });
 
 </script>
 </body>

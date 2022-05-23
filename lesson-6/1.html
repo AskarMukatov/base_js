@@ -64,7 +64,6 @@
     elm.disabled = true;
   }))
 
-  
   /*
   4. Создайте полную (глубокую) копию элемента с классом product, измените в
   этой копии путь до картинки на:
@@ -74,19 +73,15 @@
   должен правильно работать код из 3-го задания.
    */
 
-  const itmProduct = document.querySelector('.product');
-  const cloneProduct = itmProduct.cloneNode(true);
-  
-  const imgProduct = cloneProduct.querySelector('img');
-  imgProduct.src = "https://picsum.photos/id/1080/200/300";
+  const cloneProduct = document.querySelector('.product').cloneNode(true);
+    
+  cloneProduct.querySelector('img');
+  cloneProduct.src = "https://picsum.photos/id/1080/200/300";
 
   cloneProduct.querySelector('.productName').textContent = 'Товар 4';
   document.querySelector('.product:last-of-type').replaceWith(cloneProduct);
 
-  // код из третьего задания не работает. Я так понимаю что код уже 
-  //загрузился и к новому элементу не применяется.
-
-  /*
+   /*
   5. По истечении 2 секунд с момента открытия страницы первый товар должен быть
   удален из html.
    */
